@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Seongchan Kim — Video Generation & MLLM</title>
+  <meta name="description" content="Seongchan Kim (김성찬) — Integrated M.S./Ph.D. @ KAIST AI. Research in Video Generation and Multimodal LLMs. Publications: SE-NeRF (ICCV'25 W), MUG-VOS (AAAI'25), SOLA (arXiv'25), InterRVOS (under review AAAI'26), MATRIX (under review ICLR'26)." />
+  <meta property="og:title" content="Seongchan Kim — Video Generation & MLLM" />
+  <meta property="og:description" content="Research in Video Generation, VOS, MLLM. KAIST AI (GSAI)." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/assets/og-cover.png" />
+  <meta property="og:url" content="https://<your-username>.github.io" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='0.9em' font-size='90'%3E🎥%3C/text%3E%3C/svg%3E" />
+  <style>
+    :root{
+      --bg:#0b0d12; --bg-soft:#0f131a; --text:#e6eaf2; --muted:#9aa4b2; --brand:#6ca0ff; --accent:#8ef0c4; --card:#0f141c; --border:#1c2230;
+      --maxw:1080px; --radius:18px; --shadow:0 10px 30px rgba(0,0,0,.25);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;height:100%;scroll-behavior:smooth;background:radial-gradient(1200px 800px at 80% -10%, rgba(108,160,255,.10), transparent 60%), radial-gradient(1000px 700px at -10% 20%, rgba(142,240,196,.08), transparent 60%), var(--bg); color:var(--text); font:16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Inter, sans-serif}
+    a{color:var(--brand); text-decoration:none}
+    a:hover{opacity:.9}
+    .container{max-width:var(--maxw); margin:0 auto; padding:28px 20px}
+    header{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:10px 0}
+    .brand{display:flex; align-items:center; gap:14px}
+    .avatar{width:48px; height:48px; border-radius:50%; background:linear-gradient(135deg, var(--brand), var(--accent)); box-shadow:var(--shadow)}
+    .title{font-weight:700; letter-spacing:.2px}
+    nav a{margin-left:16px; color:var(--muted)}
+    .hero{display:grid; grid-template-columns:1.2fr .8fr; gap:28px; padding:44px 0}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.00)); border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--shadow)}
+    .hero .left{padding:28px}
+    .kicker{color:var(--accent); font-weight:600; letter-spacing:.3px}
+    h1{font-size:40px; line-height:1.15; margin:10px 0 8px}
+    .lead{color:var(--muted); font-size:18px}
+    .cta{display:flex; flex-wrap:wrap; gap:12px; margin-top:22px}
+    .btn{display:inline-flex; align-items:center; gap:10px; padding:12px 16px; border-radius:12px; border:1px solid var(--border); background:var(--bg-soft); color:var(--text)}
+    .btn.primary{background:linear-gradient(135deg, rgba(108,160,255,.25), rgba(142,240,196,.18)); border-color:#2a3750}
+    .btn:hover{transform:translateY(-1px)}
+    .hero .right{display:grid; place-items:center; padding:0}
+    .stat{padding:22px; text-align:center}
+    .stat h3{margin:6px 0 2px}
+    .tags{display:flex; flex-wrap:wrap; gap:10px; margin-top:14px}
+    .tag{padding:6px 10px; border-radius:999px; border:1px solid var(--border); color:var(--muted); background:rgba(255,255,255,.02)}
+    section{margin:28px 0}
+    section h2{font-size:22px; letter-spacing:.2px; margin:0 0 14px}
+    .grid{display:grid; grid-template-columns:repeat(12,1fr); gap:18px}
+    .col-6{grid-column:span 6}
+    .col-12{grid-column:span 12}
+    .pub{padding:18px; border-radius:14px; border:1px solid var(--border); background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0));}
+    .pub small{color:var(--muted)}
+    .pub a{display:inline-block; margin-top:8px}
+    .list{display:flex; flex-direction:column; gap:12px}
+    .footer{color:var(--muted); text-align:center; padding:24px 0 40px}
+    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; color:#b6c1d4}
+    /* Responsive */
+    @media (max-width: 900px){ .hero{grid-template-columns:1fr; } }
+  </style>
+  <script>
+    // Optional: basic theme toggle persisted in localStorage
+    (function(){
+      const key='theme';
+      const saved=localStorage.getItem(key);
+      if(saved==='light') document.documentElement.classList.add('light');
+      window.toggleTheme=()=>{
+        const isLight=document.documentElement.classList.toggle('light');
+        localStorage.setItem(key, isLight?'light':'dark');
+      }
+    })();
+  </script>
+  <style>
+    /* Light theme overrides */
+    .light{--bg:#f7f8fb; --bg-soft:#ffffff; --text:#0b0d12; --muted:#47536b; --brand:#2a64ff; --accent:#0aa57a; --card:#ffffff; --border:#e6e9f2}
+    .light body{background:radial-gradient(1200px 800px at 80% -10%, rgba(42,100,255,.08), transparent 60%), radial-gradient(1000px 700px at -10% 20%, rgba(10,165,122,.08), transparent 60%), var(--bg)}
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Seongchan Kim",
+    "alternateName": "김성찬",
+    "affiliation": {"@type": "CollegeOrUniversity", "name": "KAIST AI (GSAI)", "url": "https://gsai.kaist.ac.kr/"},
+    "jobTitle": "Integrated M.S./Ph.D. Student",
+    "url": "https://<your-username>.github.io/",
+    "sameAs": [
+      "https://scholar.google.com/citations?user=2DpCfdcAAAAJ&hl=en",
+      "https://www.linkedin.com/in/seongchan-kim-776b88267?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      "https://x.com/seongchank56299?t=FNXqUvsW_oyvnPmhBqCNrg&s=09"
+    ]
+  }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="avatar" aria-hidden="true"></div>
+        <div>
+          <div class="title">Seongchan Kim <span class="mono">(김성찬)</span></div>
+          <div style="color:var(--muted)">Video Generation & MLLM · Integrated M.S./Ph.D. @ <a href="https://gsai.kaist.ac.kr/" target="_blank" rel="noopener">KAIST AI / GSAI</a></div>
+        </div>
+      </div>
+      <nav>
+        <a href="#publications">Publications</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+        <a href="#" onclick="toggleTheme();return false;">Toggle theme</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="left card">
+        <div class="kicker">Hello, 안녕하세요 👋</div>
+        <h1>Interaction-aware <span style="color:var(--brand)">Video Generation</span> and <span style="color:var(--accent)">Multimodal</span> understanding</h1>
+        <p class="lead">I design video diffusion models and build evaluation frameworks to improve <strong>interaction fidelity</strong> and <strong>multi-instance grounding</strong>. Previously: VOS, language-aligned tracking. Now: interaction-aware generation and analysis.</p>
+        <div class="cta">
+          <a class="btn primary" href="https://scholar.google.com/citations?user=2DpCfdcAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar ↗</a>
+          <a class="btn" href="https://www.linkedin.com/in/seongchan-kim-776b88267?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener">LinkedIn ↗</a>
+          <a class="btn" href="https://x.com/seongchank56299?t=FNXqUvsW_oyvnPmhBqCNrg&s=09" target="_blank" rel="noopener">X (Twitter) ↗</a>
+          <a class="btn" href="https://cvlab-kaist.github.io/" target="_blank" rel="noopener">Project Pages ↗</a>
+        </div>
+        <div class="tags">
+          <div class="tag">Video Diffusion</div>
+          <div class="tag">Interaction Fidelity</div>
+          <div class="tag">Referring VOS</div>
+          <div class="tag">Multimodal Understanding</div>
+        </div>
+      </div>
+      <div class="right">
+        <div class="card" style="width:100%; overflow:hidden">
+          <video autoplay muted loop playsinline style="width:100%; display:block; border-radius:var(--radius); border:1px solid var(--border)">
+            <source src="/assets/teaser.mp4" type="video/mp4" />
+          </video>
+          <div class="stat"><small class="mono">Add a short teaser video (10–20s) showcasing your results.</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="publications">
+      <h2>Publications</h2>
+      <div class="list">
+        <div class="pub">
+          <strong>Self-Evolving Neural Radiance Fields</strong><br/>
+          <small>Wild3D Workshop @ ICCV 2025</small><br/>
+          <a href="https://cvlab-kaist.github.io/SE-NeRF/" target="_blank" rel="noopener">Project Page ↗</a>
+        </div>
+        <div class="pub">
+          <strong>MUG-VOS: Multi-Granularity Video Object Segmentation</strong><br/>
+          <small>AAAI 2025</small><br/>
+          <a href="https://cvlab-kaist.github.io/MUG-VOS/" target="_blank" rel="noopener">Project Page ↗</a>
+        </div>
+        <div class="pub">
+          <strong>Referring Video Object Segmentation via Language Aligned Track Selection</strong><br/>
+          <small>arXiv 2025</small><br/>
+          <a href="https://cvlab-kaist.github.io/SOLA/" target="_blank" rel="noopener">Project Page ↗</a>
+        </div>
+        <div class="pub">
+          <strong>InterRVOS: Interaction-aware Referring Video Object Segmentation</strong><br/>
+          <small>Under review at AAAI 2026</small><br/>
+          <a href="https://cvlab-kaist.github.io/InterRVOS/" target="_blank" rel="noopener">Project Page ↗</a>
+        </div>
+        <div class="pub">
+          <strong>MATRIX: Mask Track Alignment for Interaction-Aware Video Generation</strong><br/>
+          <small>Under review at ICLR 2026</small>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>Selected Projects</h2>
+      <div class="grid">
+        <div class="col-6 card" style="padding:16px">
+          <h3>MATRIX</h3>
+          <p>Mask Track Alignment for interaction-aware video generation. Includes MATRIX-11K, interaction-dominant layer analysis, and custom evaluation metrics.</p>
+          <a href="#" class="mono">(Repo link — coming soon)</a>
+        </div>
+        <div class="col-6 card" style="padding:16px">
+          <h3>InterRVOS</h3>
+          <p>Interaction-aware referring VOS with explicit instance-level grounding and language-conditioned track selection.</p>
+          <a href="https://cvlab-kaist.github.io/InterRVOS/" class="mono" target="_blank">Project Page ↗</a>
+        </div>
+        <div class="col-6 card" style="padding:16px">
+          <h3>SOLA</h3>
+          <p>Language Aligned Track Selection for referring VOS. Improves grounding via alignment between language and instance tracks.</p>
+          <a href="https://cvlab-kaist.github.io/SOLA/" class="mono" target="_blank">Project Page ↗</a>
+        </div>
+        <div class="col-6 card" style="padding:16px">
+          <h3>MUG-VOS</h3>
+          <p>Multi-Granularity VOS framework and benchmark for robust segmentation across temporal scales.</p>
+          <a href="https://cvlab-kaist.github.io/MUG-VOS/" class="mono" target="_blank">Project Page ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="card" style="padding:18px">
+        <p>For collaboration or internship opportunities, reach out via <a href="https://www.linkedin.com/in/seongchan-kim-776b88267?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener">LinkedIn</a> or DM on <a href="https://x.com/seongchank56299?t=FNXqUvsW_oyvnPmhBqCNrg&s=09" target="_blank" rel="noopener">X</a>. Scholar profile: <a href="https://scholar.google.com/citations?user=2DpCfdcAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>.</p>
+        <p class="mono">Last updated: <span id="last-updated"></span></p>
+      </div>
+    </section>
+
+    <div class="footer">© <span id="year"></span> Seongchan Kim. Built with ❤ on GitHub Pages.
+      <div class="mono">/index.html · lightweight, no framework</div>
+    </div>
+  </div>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('last-updated').textContent = new Date().toISOString().slice(0,10);
+  </script>
+</body>
+</html>
