@@ -53,8 +53,20 @@
     .list{display:flex; flex-direction:column; gap:12px}
     .footer{color:var(--muted); text-align:center; padding:24px 0 40px}
     .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; color:#b6c1d4}
+    
+    /* Project Preview Styles */
+    .project-preview{margin:16px 0; border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; position:relative}
+    .preview-container{background:linear-gradient(135deg, rgba(108,160,255,0.05), rgba(142,240,196,0.05)); padding:20px; transition:transform 0.2s ease}
+    .preview-container:hover{transform:translateY(-2px)}
+    .mini-preview{display:grid; grid-template-columns:120px 1fr; gap:16px; align-items:center}
+    .preview-image{width:100%; border-radius:8px; box-shadow:var(--shadow)}
+    .preview-title{font-weight:600; color:var(--brand); margin-bottom:4px}
+    .preview-desc{color:var(--muted); font-size:14px}
+    .preview-link{color:var(--brand); font-weight:500; text-decoration:none; transition:opacity 0.2s}
+    .preview-link:hover{opacity:0.8}
+    
     /* Responsive */
-    @media (max-width: 900px){ .hero{grid-template-columns:1fr; } }
+    @media (max-width: 900px){ .hero{grid-template-columns:1fr; } .mini-preview{grid-template-columns:80px 1fr; gap:12px} }
   </style>
   <script>
     // Optional: basic theme toggle persisted in localStorage
@@ -142,26 +154,111 @@
         <div class="pub">
           <strong>Self-Evolving Neural Radiance Fields</strong><br/>
           <small>Wild3D Workshop @ ICCV 2025</small><br/>
-          <a href="https://cvlab-kaist.github.io/SE-NeRF/" target="_blank" rel="noopener">Project Page ↗</a>
+          
+          <div class="project-preview">
+            <div class="preview-container">
+              <div class="mini-preview">
+                <img src="https://via.placeholder.com/120x80/1a2332/6ca0ff?text=SE-NeRF" class="preview-image" alt="SE-NeRF Preview" />
+                <div class="preview-content">
+                  <div class="preview-title">Self-Evolving NeRF</div>
+                  <div class="preview-desc">Neural radiance fields with self-evolution capabilities</div>
+                </div>
+              </div>
+              <div class="preview-actions" style="margin-top:12px;">
+                <a href="https://cvlab-kaist.github.io/SE-NeRF/" target="_blank" rel="noopener" class="preview-link">
+                  View Project Page →
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
+        
         <div class="pub">
           <strong>MUG-VOS: Multi-Granularity Video Object Segmentation</strong><br/>
           <small>AAAI 2025</small><br/>
-          <a href="https://cvlab-kaist.github.io/MUG-VOS/" target="_blank" rel="noopener">Project Page ↗</a>
+          
+          <div class="project-preview">
+            <div class="preview-container">
+              <div class="mini-preview">
+                <img src="https://via.placeholder.com/120x80/1a2332/8ef0c4?text=MUG-VOS" class="preview-image" alt="MUG-VOS Preview" />
+                <div class="preview-content">
+                  <div class="preview-title">Multi-Granularity VOS</div>
+                  <div class="preview-desc">Advanced video object segmentation across temporal scales</div>
+                </div>
+              </div>
+              <div class="preview-actions" style="margin-top:12px;">
+                <a href="https://cvlab-kaist.github.io/MUG-VOS/" target="_blank" rel="noopener" class="preview-link">
+                  View Project Page →
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
         </div>
         <div class="pub">
           <strong>Referring Video Object Segmentation via Language Aligned Track Selection</strong><br/>
           <small>arXiv 2025</small><br/>
-          <a href="https://cvlab-kaist.github.io/SOLA/" target="_blank" rel="noopener">Project Page ↗</a>
+          
+          <div class="project-preview">
+            <div class="preview-container">
+              <div class="mini-preview">
+                <img src="https://via.placeholder.com/120x80/1a2332/6ca0ff?text=SOLA" class="preview-image" alt="SOLA Preview" />
+                <div class="preview-content">
+                  <div class="preview-title">Language Aligned Track Selection</div>
+                  <div class="preview-desc">RVOS with improved language-instance alignment</div>
+                </div>
+              </div>
+              <div class="preview-actions" style="margin-top:12px;">
+                <a href="https://cvlab-kaist.github.io/SOLA/" target="_blank" rel="noopener" class="preview-link">
+                  View Project Page →
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
+        
         <div class="pub">
           <strong>InterRVOS: Interaction-aware Referring Video Object Segmentation</strong><br/>
           <small>Under review at AAAI 2026</small><br/>
-          <a href="https://cvlab-kaist.github.io/InterRVOS/" target="_blank" rel="noopener">Project Page ↗</a>
+          
+          <div class="project-preview">
+            <div class="preview-container">
+              <div class="mini-preview">
+                <img src="https://via.placeholder.com/120x80/1a2332/8ef0c4?text=InterRVOS" class="preview-image" alt="InterRVOS Preview" />
+                <div class="preview-content">
+                  <div class="preview-title">Interaction-aware RVOS</div>
+                  <div class="preview-desc">RVOS with explicit interaction understanding</div>
+                </div>
+              </div>
+              <div class="preview-actions" style="margin-top:12px;">
+                <a href="https://cvlab-kaist.github.io/InterRVOS/" target="_blank" rel="noopener" class="preview-link">
+                  View Project Page →
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
+        
         <div class="pub">
           <strong>MATRIX: Mask Track Alignment for Interaction-Aware Video Generation</strong><br/>
-          <small>Under review at ICLR 2026</small>
+          <small>Under review at ICLR 2026</small><br/>
+          
+          <div class="project-preview">
+            <div class="preview-container">
+              <div class="mini-preview">
+                <img src="https://via.placeholder.com/120x80/1a2332/ff6b9d?text=MATRIX" class="preview-image" alt="MATRIX Preview" />
+                <div class="preview-content">
+                  <div class="preview-title">Interaction-aware Video Generation</div>
+                  <div class="preview-desc">Advanced mask tracking for object interactions in video generation</div>
+                </div>
+              </div>
+              <div class="preview-actions" style="margin-top:12px;">
+                <a href="https://cvlab-kaist.github.io/MATRIX/" target="_blank" rel="noopener" class="preview-link">
+                  View Project Page →
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
