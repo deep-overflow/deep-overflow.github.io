@@ -74,6 +74,16 @@
     .overlay-content{background:rgba(0,0,0,0.8); color:white; padding:12px 20px; border-radius:8px; text-decoration:none; font-weight:500}
     .overlay-content:hover{color:white; opacity:0.9}
     
+
+    /* Publication teasers */
+    .pub.has-teaser{display:grid; grid-template-columns:240px 1fr; gap:18px; align-items:center}
+    .teaser{width:240px; aspect-ratio:16/10; border-radius:10px; overflow:hidden; border:1px solid var(--border); background:#05070b}
+    .teaser video,.teaser img{width:100%; height:100%; display:block; object-fit:cover}
+    .teaser.contain video,.teaser.contain img{object-fit:contain; background:#fff}
+    .teaser.placeholder{display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; text-align:center; padding:12px; background:linear-gradient(135deg, rgba(108,160,255,.18), rgba(142,240,196,.12)); color:var(--muted); font-size:13px}
+    .teaser.placeholder .ph-icon{font-size:30px}
+    @media (max-width: 700px){ .pub.has-teaser{grid-template-columns:1fr} .teaser{width:100%} }
+
     /* Responsive */
     @media (max-width: 900px){ .hero{grid-template-columns:1fr; } .mini-preview{grid-template-columns:80px 1fr; gap:12px} .iframe-container{height:200px} }
   </style>
@@ -181,71 +191,91 @@
 
       <h3 style="color:var(--muted); font-size:16px; margin:18px 0 10px">Under Review</h3>
       <div class="list">
-        <div class="pub">
+        <div class="pub has-teaser">
+          <div class="teaser placeholder"><div class="ph-icon">🚗</div><div>Reasoning Driving VLA<br/>Structured Pruning</div></div>
+          <div class="pub-body">
           <strong>Exploring What to Preserve for Reasoning and Action in Structured Pruning of Driving VLAs</strong><br/>
           <small><b>Seongchan Kim</b>, Soowon Son, Sangoh Kim, Hyunah Ko, Eunbeen Hong, Hyunkoo Lee, Sanghyun Lee, WonJun Moon, Kihong Kim, Dongyeon Son, Woongchan Nam, Seungryong Kim</small><br/>
-          <small>ICLR 2027 (under review)</small>
+          <small>ICLR 2027 (under review)</small></div>
         </div>
-        <div class="pub">
+        <div class="pub has-teaser">
+          <div class="teaser"><video muted loop playsinline preload="none" poster="assets/teasers/playground.jpg" data-src="assets/teasers/playground.mp4"></video></div>
+          <div class="pub-body">
           <strong>PLAYGROUND: Progressive Layout Generation with Render-Grounded Planning</strong><br/>
           <small>Jaeho Lee, Junhwan Heo, Junghyun Park, WonJun Moon, Eunju Yang, Seungho Jang, <b>Seongchan Kim</b>, Seungryong Kim</small><br/>
           <small>ICLR 2027 (under review)</small><br/>
-          <a href="https://arxiv.org/abs/2610.18865" target="_blank" rel="noopener">Paper</a> · <a href="https://cvlab-kaist.github.io/PlayGround/" target="_blank" rel="noopener">Project Page</a> · <a href="https://github.com/cvlab-kaist/PlayGround" target="_blank" rel="noopener">Code</a>
+          <a href="https://arxiv.org/abs/2610.18865" target="_blank" rel="noopener">Paper</a> · <a href="https://cvlab-kaist.github.io/PlayGround/" target="_blank" rel="noopener">Project Page</a> · <a href="https://github.com/cvlab-kaist/PlayGround" target="_blank" rel="noopener">Code</a></div>
         </div>
-        <div class="pub">
+        <div class="pub has-teaser">
+          <div class="teaser"><video muted loop playsinline preload="none" poster="assets/teasers/dreamx.jpg" data-src="assets/teasers/dreamx.mp4"></video></div>
+          <div class="pub-body">
           <strong>DreamX: Video Diffusion Model is a Universal Latent Action Learner</strong><br/>
           <small>Jisoo Kim, Chaehyun Kim, Junsu Kim, Jiho Park, <b>Seongchan Kim</b>, Eunbeen Hong, Soowon Son, Fu-En Yang, Seungryong Kim</small><br/>
           <small>ICLR 2027 (under review)</small><br/>
-          <a href="https://arxiv.org/abs/2611.05377" target="_blank" rel="noopener">Paper</a> · <a href="https://cvlab-kaist.github.io/DreamX/" target="_blank" rel="noopener">Project Page</a> · <a href="https://github.com/cvlab-kaist/DreamX" target="_blank" rel="noopener">Code</a>
+          <a href="https://arxiv.org/abs/2611.05377" target="_blank" rel="noopener">Paper</a> · <a href="https://cvlab-kaist.github.io/DreamX/" target="_blank" rel="noopener">Project Page</a> · <a href="https://github.com/cvlab-kaist/DreamX" target="_blank" rel="noopener">Code</a></div>
         </div>
-        <div class="pub">
+        <div class="pub has-teaser">
+          <div class="teaser contain"><img src="assets/teasers/factembed.jpg" alt="" loading="lazy"/></div>
+          <div class="pub-body">
           <strong>Factorized MLLM Embeddings for Composed Image Retrieval</strong><br/>
           <small>WonJun Moon, <b>Seongchan Kim</b>, Dahun Kim, Seungryong Kim</small><br/>
           <small>CVPR 2027 (under review)</small><br/>
-          <a href="https://arxiv.org/abs/2611.05193" target="_blank" rel="noopener">Paper</a> · <a href="https://cvlab-kaist.github.io/FactEmbed/" target="_blank" rel="noopener">Project Page</a> · <a href="https://github.com/cvlab-kaist/FactEmbed" target="_blank" rel="noopener">Code</a>
+          <a href="https://arxiv.org/abs/2611.05193" target="_blank" rel="noopener">Paper</a> · <a href="https://cvlab-kaist.github.io/FactEmbed/" target="_blank" rel="noopener">Project Page</a> · <a href="https://github.com/cvlab-kaist/FactEmbed" target="_blank" rel="noopener">Code</a></div>
         </div>
       </div>
 
       <h3 style="color:var(--muted); font-size:16px; margin:18px 0 10px">Conference</h3>
       <div class="list">
-        <div class="pub">
+        <div class="pub has-teaser">
+          <div class="teaser"><video muted loop playsinline preload="none" poster="assets/teasers/matrix.jpg" data-src="assets/teasers/matrix.mp4"></video></div>
+          <div class="pub-body">
           <strong>MATRIX: Mask-Track Alignment for Interaction-Aware Video Generation</strong><br/>
           <small>Siyoon Jin, <b>Seongchan Kim</b>, Dahyun Chung, Jaeho Lee, Hyunwook Choi, Jisu Nam, Jiyoung Kim, Seungryong Kim</small><br/>
           <small>ICLR 2026</small><br/>
-          <a href="https://arxiv.org/abs/2510.07310" target="_blank" rel="noopener">Paper</a> · <a href="https://cvlab-kaist.github.io/MATRIX/" target="_blank" rel="noopener">Project Page</a> · <a href="https://github.com/cvlab-kaist/MATRIX" target="_blank" rel="noopener">Code</a>
+          <a href="https://arxiv.org/abs/2510.07310" target="_blank" rel="noopener">Paper</a> · <a href="https://cvlab-kaist.github.io/MATRIX/" target="_blank" rel="noopener">Project Page</a> · <a href="https://github.com/cvlab-kaist/MATRIX" target="_blank" rel="noopener">Code</a></div>
         </div>
-        <div class="pub">
+        <div class="pub has-teaser">
+          <div class="teaser"><video muted loop playsinline preload="none" poster="assets/teasers/interrvos.jpg" data-src="assets/teasers/interrvos.mp4"></video></div>
+          <div class="pub-body">
           <strong>InterRVOS: Interaction-Aware Referring Video Object Segmentation</strong><br/>
           <small>Woojeong Jin, <b>Seongchan Kim</b>, Jaeho Lee, Seungryong Kim</small><br/>
           <small>CVPR 2026</small><br/>
-          <a href="https://arxiv.org/abs/2506.02356" target="_blank" rel="noopener">Paper</a> · <a href="https://cvlab-kaist.github.io/InterRVOS/" target="_blank" rel="noopener">Project Page</a> · <a href="https://github.com/cvlab-kaist/InterRVOS" target="_blank" rel="noopener">Code</a>
+          <a href="https://arxiv.org/abs/2506.02356" target="_blank" rel="noopener">Paper</a> · <a href="https://cvlab-kaist.github.io/InterRVOS/" target="_blank" rel="noopener">Project Page</a> · <a href="https://github.com/cvlab-kaist/InterRVOS" target="_blank" rel="noopener">Code</a></div>
         </div>
-        <div class="pub">
+        <div class="pub has-teaser">
+          <div class="teaser"><img src="assets/teasers/mugvos.jpg" alt="" loading="lazy"/></div>
+          <div class="pub-body">
           <strong>MUG-VOS: Multi-Granularity Video Object Segmentation</strong><br/>
           <small>Sangbeom Lim*, <b>Seongchan Kim*</b>, Seungjun An*, Seokju Cho, Paul Hongsuck Seo, Seungryong Kim</small><br/>
           <small>AAAI 2025</small><br/>
-          <a href="https://arxiv.org/abs/2412.01471" target="_blank" rel="noopener">Paper</a> · <a href="https://cvlab-kaist.github.io/MUG-VOS/" target="_blank" rel="noopener">Project Page</a> · <a href="https://github.com/cvlab-kaist/MUG-VOS" target="_blank" rel="noopener">Code</a>
+          <a href="https://arxiv.org/abs/2412.01471" target="_blank" rel="noopener">Paper</a> · <a href="https://cvlab-kaist.github.io/MUG-VOS/" target="_blank" rel="noopener">Project Page</a> · <a href="https://github.com/cvlab-kaist/MUG-VOS" target="_blank" rel="noopener">Code</a></div>
         </div>
       </div>
 
       <h3 style="color:var(--muted); font-size:16px; margin:18px 0 10px">Workshop</h3>
       <div class="list">
-        <div class="pub">
+        <div class="pub has-teaser">
+          <div class="teaser placeholder"><div class="ph-icon">🚗</div><div>Reasoning Driving VLA<br/>Structured Pruning</div></div>
+          <div class="pub-body">
           <strong>One Loss Is Not Enough: Cross-Objective Structured Pruning for Reasoning Vision–Language–Action Models</strong><br/>
           <small><b>Seongchan Kim</b>, Soowon Son, Sangoh Kim, Hyunah Ko, Eunbeen Hong, Hyunkoo Lee, Sanghyun Lee, WonJun Moon, Kihong Kim, Dongyeon Son, Woongchan Nam, Seungryong Kim</small><br/>
-          <small>ODI, PTA &amp; VLM4RWD Workshops @ NeurIPS 2026 · Preliminary version of the ICLR 2027 submission above</small>
+          <small>ODI, PTA &amp; VLM4RWD Workshops @ NeurIPS 2026 · Preliminary version of the ICLR 2027 submission above</small></div>
         </div>
-        <div class="pub">
+        <div class="pub has-teaser">
+          <div class="teaser"><video muted loop playsinline preload="none" poster="assets/teasers/sola.jpg" data-src="assets/teasers/sola.mp4"></video></div>
+          <div class="pub-body">
           <strong>Referring Video Object Segmentation via Language-Aligned Track Selection</strong><br/>
           <small><b>Seongchan Kim*</b>, Woojeong Jin*, Sangbeom Lim, Heeji Yoon, Hyunwook Choi, Seungryong Kim</small><br/>
           <small>AdaptFM Workshop @ ICML 2026</small><br/>
-          <a href="https://arxiv.org/abs/2412.01136" target="_blank" rel="noopener">Paper</a> · <a href="https://cvlab-kaist.github.io/SOLA/" target="_blank" rel="noopener">Project Page</a> · <a href="https://github.com/cvlab-kaist/SOLA" target="_blank" rel="noopener">Code</a>
+          <a href="https://arxiv.org/abs/2412.01136" target="_blank" rel="noopener">Paper</a> · <a href="https://cvlab-kaist.github.io/SOLA/" target="_blank" rel="noopener">Project Page</a> · <a href="https://github.com/cvlab-kaist/SOLA" target="_blank" rel="noopener">Code</a></div>
         </div>
-        <div class="pub">
+        <div class="pub has-teaser">
+          <div class="teaser"><video muted loop playsinline preload="none" poster="assets/teasers/senerf.jpg" data-src="assets/teasers/senerf.mp4"></video></div>
+          <div class="pub-body">
           <strong>Self-Evolving Neural Radiance Fields</strong><br/>
           <small>Jaewoo Jung*, Jisang Han*, Jiwon Kang*, <b>Seongchan Kim</b>, Min-Seop Kwak, Seungryong Kim</small><br/>
           <small>Wild3D Workshop @ ICCV 2023</small><br/>
-          <a href="https://arxiv.org/abs/2312.01003" target="_blank" rel="noopener">Paper</a> · <a href="https://cvlab-kaist.github.io/SE-NeRF/" target="_blank" rel="noopener">Project Page</a> · <a href="https://github.com/cvlab-kaist/SE-NeRF" target="_blank" rel="noopener">Code</a>
+          <a href="https://arxiv.org/abs/2312.01003" target="_blank" rel="noopener">Paper</a> · <a href="https://cvlab-kaist.github.io/SE-NeRF/" target="_blank" rel="noopener">Project Page</a> · <a href="https://github.com/cvlab-kaist/SE-NeRF" target="_blank" rel="noopener">Code</a></div>
         </div>
       </div>
     </section>
@@ -303,6 +333,19 @@
   </div>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+  <script>
+    // Teaser videos: load lazily, play only while visible
+    (function(){
+      const vids=document.querySelectorAll('.teaser video[data-src]');
+      if(!('IntersectionObserver' in window)){vids.forEach(v=>{v.src=v.dataset.src;v.play().catch(()=>{});});return;}
+      const io=new IntersectionObserver(es=>es.forEach(e=>{
+        const v=e.target;
+        if(e.isIntersecting){ if(!v.src) v.src=v.dataset.src; v.play().catch(()=>{}); }
+        else v.pause();
+      }),{rootMargin:'100px'});
+      vids.forEach(v=>io.observe(v));
+    })();
   </script>
 </body>
 </html>
