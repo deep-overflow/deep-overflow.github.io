@@ -58,16 +58,17 @@
 
     /* Hero */
     .hero{padding:8px 0 64px}
-    .field{position:relative; height:clamp(240px, 34vw, 380px); margin:0 -32px; cursor:crosshair}
+    .field{position:relative; height:clamp(180px, 24vw, 280px); margin:0 -32px; cursor:crosshair}
     .field canvas{position:absolute; inset:0; width:100%; height:100%; display:block}
     .field figcaption{position:absolute; right:32px; bottom:10px; font-size:13px; color:var(--faint)}
-    .intro{display:grid; grid-template-columns:minmax(0,1.05fr) minmax(0,1fr); gap:var(--gap); align-items:end; margin-top:8px}
-    .portrait{display:block; width:168px; height:auto; border-radius:12px; margin-bottom:22px; outline:1px solid var(--rule); outline-offset:-1px}
-    .intro h1{font-size:clamp(46px, 7.2vw, 92px); line-height:.95; letter-spacing:-.035em; font-weight:600; margin:0}
-    .intro h1 .kr{display:block; font-size:.3em; letter-spacing:0; font-weight:400; color:var(--muted); margin-top:14px; line-height:1.2}
+    .intro{display:grid; grid-template-columns:220px minmax(0,1fr); gap:48px; align-items:start; margin-top:4px}
+    .portrait{display:block; width:100%; height:auto; border-radius:14px; outline:1px solid var(--rule); outline-offset:-1px}
+    .intro h1{font-size:clamp(42px, 6vw, 72px); line-height:1; letter-spacing:-.035em; font-weight:600; margin:0}
+    .intro h1 .kr{display:block; font-size:.32em; letter-spacing:0; font-weight:400; color:var(--muted); margin-top:10px; line-height:1.2}
     .statement{font-size:19px; line-height:1.55; max-width:36em; color:var(--ink)}
     .statement + .statement{margin-top:12px}
-    .role{margin-top:22px; color:var(--muted); font-size:16px}
+    .role{margin-top:14px; color:var(--muted); font-size:16px; max-width:40em}
+    .role + .statement{margin-top:24px}
     .contact-row{display:flex; flex-wrap:wrap; gap:10px; margin-top:22px}
     .chip{display:inline-flex; align-items:center; gap:8px; padding:7px 14px; border:1px solid var(--rule); border-radius:999px; text-decoration:none; font-size:15px; background:var(--surface)}
     .chip:hover{border-color:var(--accent)}
@@ -116,7 +117,7 @@
 
     @media (max-width: 880px){
       :root{--gap:28px}
-      .intro{grid-template-columns:1fr}
+      .intro{grid-template-columns:160px minmax(0,1fr); gap:28px}
       .sec{grid-template-columns:1fr; gap:18px; padding:44px 0}
       .sec > h2{position:static}
       .facts{grid-template-columns:1fr}
@@ -125,7 +126,8 @@
       .pub{grid-template-columns:1fr; gap:14px}
     }
     @media (max-width: 600px){
-      .portrait{width:132px}
+      .intro{grid-template-columns:1fr; gap:20px}
+      .portrait{width:140px}
       .wrap{padding:0 20px}
       .field{margin:0 -20px}
       .field figcaption{right:20px}
@@ -171,12 +173,10 @@
       </figure>
 
       <div class="intro">
-        <div>
-          <img class="portrait" src="assets/img/profile.jpg" alt="Seongchan Kim" width="600" height="859" />
+        <img class="portrait" src="assets/img/profile.jpg" alt="Seongchan Kim" width="600" height="859" />
+        <div class="intro-text">
           <h1>Seongchan Kim<span class="kr">김성찬</span></h1>
           <p class="role">Integrated M.S.–Ph.D. student at <a href="https://cvlab.kaist.ac.kr/" target="_blank" rel="noopener">CVLAB</a>, Kim Jaechul Graduate School of AI, KAIST, advised by Prof. Seungryong Kim.</p>
-        </div>
-        <div>
           <p class="statement">I study how intelligent systems perceive dynamic scenes and act within them. I started with multimodal video understanding and generation, and now work on vision-language-action models for autonomous driving and robot manipulation.</p>
           <p class="statement">Next, I want to understand world models and action generation: how well perception, context modeling, and action generation inside a world model can capture the uncertainty of future dynamics.</p>
           <div class="contact-row">
